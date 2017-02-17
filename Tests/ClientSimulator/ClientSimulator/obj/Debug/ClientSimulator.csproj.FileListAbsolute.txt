@@ -1,0 +1,11 @@
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\bin\Debug\ClientSimulator.exe.config
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\bin\Debug\ClientSimulator.exe
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\bin\Debug\ClientSimulator.pdb
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\bin\Debug\Newtonsoft.Json.dll
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\bin\Debug\Newtonsoft.Json.xml
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.csprojResolveAssemblyReference.cache
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.Form1.resources
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.Properties.Resources.resources
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.csproj.GenerateResource.Cache
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.exe
+D:\Pilot\C#\Hula\Tests\ClientSimulator\ClientSimulator\obj\Debug\ClientSimulator.pdb

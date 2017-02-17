@@ -1,0 +1,9 @@
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\bin\Debug\Image2String.exe.config
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\bin\Debug\Image2String.exe
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\bin\Debug\Image2String.pdb
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.csprojResolveAssemblyReference.cache
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.Form1.resources
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.Properties.Resources.resources
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.csproj.GenerateResource.Cache
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.exe
+D:\Pilot\C#\Hula\Tests\Image2String\Image2String\obj\Debug\Image2String.pdb

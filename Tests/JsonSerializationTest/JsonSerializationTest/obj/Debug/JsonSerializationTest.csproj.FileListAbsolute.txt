@@ -1,0 +1,8 @@
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\bin\Debug\JsonSerializationTest.exe.config
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\bin\Debug\JsonSerializationTest.exe
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\bin\Debug\JsonSerializationTest.pdb
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\bin\Debug\Newtonsoft.Json.dll
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\bin\Debug\Newtonsoft.Json.xml
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\obj\Debug\JsonSerializationTest.csprojResolveAssemblyReference.cache
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\obj\Debug\JsonSerializationTest.exe
+D:\Pilot\C#\Hula\Tests\JsonSerializationTest\JsonSerializationTest\obj\Debug\JsonSerializationTest.pdb
