@@ -1,2 +1,2 @@
 # hulaquan
-app for pets
+app for pets, to demostrate azure services
