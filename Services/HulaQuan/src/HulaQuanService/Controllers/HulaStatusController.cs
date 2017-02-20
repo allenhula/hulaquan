@@ -16,10 +16,12 @@ namespace HulaQuanService.Controllers
     public class HulaStatusController : Controller
     {
         public IHulaStatusRepository HulaStatusRepository { get; private set; }
+        public IStorageOperations StorageOperations { get; private set; }
 
-        public HulaStatusController(IHulaStatusRepository hulaStatusRepository)
+        public HulaStatusController(IHulaStatusRepository hulaStatusRepository, IStorageOperations storageOperations)
         {
             HulaStatusRepository = hulaStatusRepository;
+            StorageOperations = storageOperations;
         }
 
         [HttpGet]
@@ -54,8 +56,9 @@ namespace HulaQuanService.Controllers
 
                 var imageBinary = Convert.FromBase64String(image.Base64Data);
                 var imageContainerName = status.Publisher;
-                var imageBlobName = $"{status.PublishDate.Year}/{status.PublishDate.Month}/{status.PublishDate.Ticks}_{count}.{image.FileName.Split('.').Last()}"; 
-                var imageUrl = await StorageHelper.SaveImageToBlobAsync(imageContainerName, imageBlobName, imageBinary);
+                var imageBlobName = $"{status.PublishDate.Year}/{status.PublishDate.Month}/{status.PublishDate.Ticks}_{count}.{image.FileName.Split('.').Last()}";
+
+                var imageUrl = await StorageOperations.UploadBlobAsync(imageContainerName, imageBlobName, imageBinary);
 
                 imagesString.Append(imageUrl);
                 count++;

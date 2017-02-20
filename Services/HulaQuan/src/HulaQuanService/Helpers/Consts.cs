@@ -8,5 +8,9 @@ namespace HulaQuanService.Helpers
     public class Consts
     {
         public const string ImageStringDelimiter = ",";
+
+        public const string dbConnStrSecureNameInKv = "dbConnectionString";
+
+        public const string storageConnStrSecureNameInKv = "stConnectionString";
     }
 }

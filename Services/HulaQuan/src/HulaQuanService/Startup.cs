@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using HulaQuanService.Models;
 using HulaQuanService.Data;
 using Microsoft.EntityFrameworkCore;
+using HulaQuanService.Helpers;
 
 namespace HulaQuanService
 {
@@ -21,8 +22,13 @@ namespace HulaQuanService
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddAzureKeyVault(@"https://allenlhulakv.vault.azure.cn/", "8e27f8b6-2768-41ce-b4ba-5283508edf1e","!!123abc")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            //builder.AddAzureKeyVault(
+            //    config["KeyVault"],
+            //    config["ClientId"],
+            //    config["ClientSecret"]);
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -31,7 +37,7 @@ namespace HulaQuanService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HulaStatusContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration[Consts.dbConnStrSecureNameInKv]));
 
             // Add framework services.
             services.AddMvc();
@@ -39,7 +45,9 @@ namespace HulaQuanService
             // Fake one
             //services.AddSingleton<IHulaStatusRepository, FakeHulaStatusRepository>();
 
+            services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<IHulaStatusRepository, HulaStatusRepository>();
+            services.AddSingleton<IStorageOperations, StorageOperations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
