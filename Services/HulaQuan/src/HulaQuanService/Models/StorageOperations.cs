@@ -16,7 +16,7 @@ namespace HulaQuanService.Models
 
         public StorageOperations(IConfiguration configuration)
         {
-            storageAccount = CloudStorageAccount.Parse(configuration[Consts.storageConnStrSecureNameInKv]);
+            storageAccount = CloudStorageAccount.Parse(configuration[Consts.StorageConnStrSecureNameInKv]);
             blobClient = storageAccount.CreateCloudBlobClient();
         }
 

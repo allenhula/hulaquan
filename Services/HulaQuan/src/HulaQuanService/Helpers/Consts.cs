@@ -9,8 +9,10 @@ namespace HulaQuanService.Helpers
     {
         public const string ImageStringDelimiter = ",";
 
-        public const string dbConnStrSecureNameInKv = "dbConnectionString";
+        public const string DbConnStrSecureNameInKv = "dbConnectionString";
 
-        public const string storageConnStrSecureNameInKv = "stConnectionString";
+        public const string StorageConnStrSecureNameInKv = "stConnectionString";
+
+        public const int PageSize = 5;
     }
 }

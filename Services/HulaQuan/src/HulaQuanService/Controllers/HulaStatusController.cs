@@ -41,39 +41,48 @@ namespace HulaQuanService.Controllers
         {
             if (status == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid request body");
             }
 
-            // save image to storage at first
-            var imagesString = new StringBuilder();
-            int count = 0;
-            foreach (var image in status.Images)
+            HulaStatus hulaStatus;
+            try
             {
-                if (count > 0)
+                // save images to storage at first
+                // and get back the urls
+                var imagesString = new StringBuilder();
+                int count = 0;
+                foreach (var image in status.Images)
                 {
-                    imagesString.Append(Consts.ImageStringDelimiter);
+                    if (count > 0)
+                    {
+                        imagesString.Append(Consts.ImageStringDelimiter);
+                    }
+
+                    var imageBinary = Convert.FromBase64String(image.Base64Data);
+                    var imageContainerName = status.Publisher;
+                    var imageBlobName = $"{status.PublishDate.Year}/{status.PublishDate.Month}/{status.PublishDate.Ticks}_{count}.{image.FileName.Split('.').Last()}";
+
+                    var imageUrl = await StorageOperations.UploadBlobAsync(imageContainerName, imageBlobName, imageBinary);
+
+                    imagesString.Append(imageUrl);
+                    count++;
                 }
 
-                var imageBinary = Convert.FromBase64String(image.Base64Data);
-                var imageContainerName = status.Publisher;
-                var imageBlobName = $"{status.PublishDate.Year}/{status.PublishDate.Month}/{status.PublishDate.Ticks}_{count}.{image.FileName.Split('.').Last()}";
+                // then add status to database
+                hulaStatus = new HulaStatus()
+                {
+                    Content = status.Content,
+                    Publisher = status.Publisher,
+                    PublishDate = status.PublishDate,
+                    Images = imagesString.ToString()
+                };
 
-                var imageUrl = await StorageOperations.UploadBlobAsync(imageContainerName, imageBlobName, imageBinary);
-
-                imagesString.Append(imageUrl);
-                count++;
+                HulaStatusRepository.Create(hulaStatus);
             }
-
-            // then add status to database
-            var hulaStatus = new HulaStatus()
+            catch (Exception)
             {
-                Content = status.Content,
-                Publisher = status.Publisher,
-                PublishDate = status.PublishDate,
-                Images = imagesString.ToString()
-            };
-
-            HulaStatusRepository.Create(hulaStatus);
+                return BadRequest("Failed to create");
+            }
             
             return Ok(hulaStatus);
         }

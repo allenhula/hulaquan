@@ -25,10 +25,6 @@ namespace HulaQuanService
                 .AddAzureKeyVault(@"https://allenlhulakv.vault.azure.cn/", "8e27f8b6-2768-41ce-b4ba-5283508edf1e","!!123abc")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
-            //builder.AddAzureKeyVault(
-            //    config["KeyVault"],
-            //    config["ClientId"],
-            //    config["ClientSecret"]);
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -37,7 +33,7 @@ namespace HulaQuanService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HulaStatusContext>(options => 
-                options.UseSqlServer(Configuration[Consts.dbConnStrSecureNameInKv]));
+                options.UseSqlServer(Configuration[Consts.DbConnStrSecureNameInKv]));
 
             // Add framework services.
             services.AddMvc();
