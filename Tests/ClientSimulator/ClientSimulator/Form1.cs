@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using IdentityModel.Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,12 +77,36 @@ namespace ClientSimulator
 
             var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
 
-            var response = new HttpClient()
-                .PostAsync("http://localhost:5000/api/hulastatus", httpContent)
-                .Result;
+            try
+            {
+                var disco = DiscoveryClient.GetAsync("http://localhost:5005").Result;
 
-            var result = response.Content.ReadAsStringAsync().Result;
-            rTxt.Text = result;
+                var tokenClient = new TokenClient(disco.TokenEndpoint, "test.client", "secret");
+                var tokenResponse = tokenClient.RequestClientCredentialsAsync("hulaStatusApi").Result;
+
+                if (tokenResponse.IsError)
+                {
+                    rTxt.Text = tokenResponse.Error;
+                }
+
+                var httpClient = new HttpClient();
+                httpClient.SetBearerToken(tokenResponse.AccessToken);
+
+                var response = httpClient.PostAsync("http://localhost:5000/api/hulastatus", httpContent).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    rTxt.Text = response.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    rTxt.Text = response.StatusCode.ToString();
+                }                
+            }
+            catch (Exception ex)
+            {
+                rTxt.Text = $"Something wrong when publish with exception {ex.Message}";
+            }
         }
     }
 

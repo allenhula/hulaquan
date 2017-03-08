@@ -22,8 +22,15 @@ namespace HulaQuanService
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddAzureKeyVault(@"https://allenlhulakv.vault.azure.cn/", "8e27f8b6-2768-41ce-b4ba-5283508edf1e","!!123abc")
                 .AddEnvironmentVariables();
+            var config = builder.Build();
+
+            builder.AddAzureKeyVault(
+                config["KeyVault:NameUri"],
+                config["KeyVault:ClientId"],
+                config["KeyVault:ClientSecret"]
+                );
+
             Configuration = builder.Build();
         }
 

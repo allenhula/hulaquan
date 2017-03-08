@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1BF8B92C-C2B2-458C-A615-E7D860B2B85A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C62CC309-558E-4CB5-9476-FB919AA0598C}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HulaQuanWeb", "src\HulaQuanWeb\HulaQuanWeb.xproj", "{2D2ADF89-F159-409C-AA39-FBF410450BE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D2ADF89-F159-409C-AA39-FBF410450BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2ADF89-F159-409C-AA39-FBF410450BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2ADF89-F159-409C-AA39-FBF410450BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2ADF89-F159-409C-AA39-FBF410450BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D2ADF89-F159-409C-AA39-FBF410450BE2} = {1BF8B92C-C2B2-458C-A615-E7D860B2B85A}
+	EndGlobalSection
+EndGlobal
